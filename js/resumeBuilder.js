@@ -3,8 +3,8 @@ var bio = {
 	"role" : "Looking for a Opportunity!!",
 	"welcomeMessage" : "Hi! Welcome to My Online Resume!",
 	"skills" : ["HTML", "CSS", "JavaScript", "jQuery", "Git", "Java", "Testing", "Test Automation"],
-	"bioPic" : "images/me.jpg",
-	"contacts" : [
+	"biopic" : "images/me.jpg",
+	"contacts":	 [
 		{
 			"mobile" : "+919371033784",
 			"github" : "maggiesri", 
@@ -41,10 +41,10 @@ var work = {
 		{
 			"employer" : "CarPro Systems", 
 			"title" : "Software Support/ QA Engineer",
-			"dates" : "2003 - July 2013",
+			"dates" : "2003 - 2013",
 			"location" : "Pune, Maharashtra",
-			"description" : "Was in Charge of Support/QA Department."			
-		}
+			"description" : "Was in Charge of Support/QA Department."
+					}
 	]
 };
 
@@ -80,7 +80,7 @@ var education = {
 			"location" : "Chennai,India",
 			"degree" : "ICWAI", 
 			"majors" : "Cost Accountant",
-			"dates" : "1990- 1992",
+			"dates" : "1990 - 1992",
 			"url" : "http://icmai.in/icmai/"
 		}
 	],
@@ -112,7 +112,7 @@ var education = {
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%",bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-	var formattedImage = HTMLbioPic.replace("%data%",bio.bioPic);
+	var formattedImage = HTMLbiopic.replace("%data%",bio.biopic);
 	var formattedMessage = HTMLWelcomeMsg.replace("%data%",bio.welcomeMessage);
 
 	$("#header").prepend(formattedRole).prepend(formattedName).append(formattedImage,formattedMessage);
@@ -123,6 +123,13 @@ bio.display = function() {
 		$("#skills").append(formattedSkills);
 	};
 
+	for(contact in bio.contacts) {
+		var formattedMobile = HTMLmobile.replace("%data%",bio.contacts[contact].mobile);
+		var formattedEmail = HTMLemail.replace("%data%",bio.contacts[contact].email);
+		var formatedGithub = HTMLgithub.replace("%data%",bio.contacts[contact].github);
+		var formattedSkype = HTMLcontactGeneric.replace("%contact%","skype").replace("%data%",bio.contacts[contact].skype);
+		$("#topContacts").append(formattedMobile,formattedEmail,formatedGithub,formattedSkype);
+	};
 	for(contact in bio.contacts) {
 		var formattedMobile = HTMLmobile.replace("%data%",bio.contacts[contact].mobile);
 		var formattedEmail = HTMLemail.replace("%data%",bio.contacts[contact].email);
