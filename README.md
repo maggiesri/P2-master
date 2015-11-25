@@ -1,2 +1,2 @@
-# nanodegree-project2
+#  Udacity nanodegree-project2
 Frontend nanodegree resume
